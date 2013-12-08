@@ -124,6 +124,9 @@ static void hdmi_wq_parse_edid(struct hdmi *hdmi)
 	}
 	
 	rc = hdmi_edid_parse_base(buff, &extendblock, pedid);
+
+	 extendblock = 0; // g2t: force the "no CEA-fallback"
+	 printk("g2t: force the no CEA-fallback");
 	if(rc) {
 		dev_err(hdmi->dev, "[HDMI] parse edid base block error\n");
 		goto out;
